@@ -13,4 +13,22 @@ void menu() async {
   print("Press 4. For Update");
 }
 
+void add(List myList) {
+  print("Enter Your Good Name");
+  String name = stdin.readLineSync()!;
+  print("````````````````````````````");
 
+  print("Enter Your Age");
+  int age = int.parse(stdin.readLineSync()!);
+  print("````````````````````````````");
+
+  print("Enter Your Degree Status");
+  String degree = stdin.readLineSync()!;
+  print("````````````````````````````");
+
+  print("Enter Your CurrentProgree");
+  String progress = stdin.readLineSync()!;
+  print("````````````````````````````");
+
+  myList.addAll([name, age, degree, progress]);
+}
