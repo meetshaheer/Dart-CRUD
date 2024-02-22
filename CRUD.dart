@@ -22,7 +22,7 @@ void main(List<String> args) {
         break;
 
       case 3:
-        add(Data);
+        delete(Data);
         print("Terminate? Y/N");
         terminate = stdin.readLineSync()!;
         break;
@@ -90,9 +90,8 @@ void view(List myList) {
     print("Enter Your ID to Search");
     String identity = stdin.readLineSync()!;
 
-    print("object");
     for (var i = 0; i < myList.length; i++) {
-      if (identity == [i][0]) {
+      if (identity == myList[i][0]) {
         print("Hurra! Your Record Found");
         print(myList[i]);
       } else {
@@ -102,4 +101,29 @@ void view(List myList) {
   }
 
   print("\n\n\n");
+}
+
+void delete(List myList) {
+  print("     Press 1 For Delete Whole List");
+  print("     Press 2 For Delete a Specific Record");
+
+  int choice = int.parse(stdin.readLineSync()!);
+
+  if (choice == 1) {
+    myList.clear();
+
+    print(myList);
+  } else if (choice == 2) {
+    print("Enter Your ID to Delete");
+    String identity = stdin.readLineSync()!;
+
+    for (var i = 0; i < myList.length; i++) {
+      if (identity == myList[i][0]) {
+        print("Hurra! Your Record Found");
+        myList.removeWhere((element) => element[0] == identity);
+        print("Updated List is Here");
+        print(myList);
+      }
+    }
+  }
 }
