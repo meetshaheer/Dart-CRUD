@@ -1,32 +1,49 @@
 import 'dart:io';
 
 void main(List<String> args) {
+  // Data List of Lists Where CRUD will Perform
   List Data = [
     ["SPR452", "Shaheer", 23, "MS", "Last Year"],
     ["FA20", "Ali", 25, "Undergrade", "8th"]
   ];
+
+  // While Loop For Program Iteration
   String terminate = "N";
   while (terminate == 'N') {
     int choice = menu();
     switch (choice) {
+      //
+      // Case 1 for Only View The Data
       case 1:
         view(Data);
         print("Terminate? Y/N");
         terminate = stdin.readLineSync()!;
         break;
 
+      // Case 2 for Add New Record in List
       case 2:
         add(Data);
         print("Terminate? Y/N");
         terminate = stdin.readLineSync()!;
         break;
 
+      // Case 3 for Delete the data
+      // There are two Operations,
+      // 1- Delete the whole list
+      // 2- Delete a specific Record (Record Found by ID & then delete the whole row)
       case 3:
         delete(Data);
         print("Terminate? Y/N");
         terminate = stdin.readLineSync()!;
         break;
 
+      // Case 4 to Update the List elements
+      // There are 3 Operations
+      // 1- Update the Age
+      // 2- Update the Degree Status
+      // 3- Update the Current Status
+
+      // Operation performed by using ID search
       case 4:
         updatedList(Data);
         print("Terminate? Y/N");
@@ -38,6 +55,7 @@ void main(List<String> args) {
   }
 }
 
+// Menu FUnction
 int menu() {
   print("Please Wait! Loading ........\n");
 
@@ -50,6 +68,7 @@ int menu() {
   return type;
 }
 
+// Adding New Record Function
 void add(List myList) {
   print("Enter Your Identity No");
   String id = stdin.readLineSync()!;
@@ -72,12 +91,18 @@ void add(List myList) {
   print("````````````````````````````");
   print("\n\n\n");
 
+  // Add all 5 elements in List
   List<dynamic> addList = [id, name, age, degree, progress];
   myList.add(addList);
   print(addList);
   print("Record Saved");
 }
 
+// View Record Function
+
+// There are 2 Operations
+// 1- View the whole list
+// 2- View a specifi record, found using ID
 void view(List myList) {
   print("     Press 1 For View Whole List");
   print("     Press 2 For View Specific Record");
@@ -98,6 +123,7 @@ void view(List myList) {
       }
     }
 
+    // Record not found Message.
     if (!recordFound) {
       print("Record Not Found");
     }
@@ -106,6 +132,9 @@ void view(List myList) {
   print("\n\n\n");
 }
 
+// Delete Function. Also THere are two Operations.
+// 1- Delete whole List
+// 2- Delete a specific record, by using ID
 void delete(List myList) {
   print("     Press 1 For Delete Whole List");
   print("     Press 2 For Delete a Specific Record");
@@ -120,6 +149,7 @@ void delete(List myList) {
     print("Enter Your ID to Delete");
     String identity = stdin.readLineSync()!;
 
+    // Delete by ID
     bool recordFound = false;
     for (var i = 0; i < myList.length; i++) {
       if (identity == myList[i][0]) {
@@ -131,6 +161,7 @@ void delete(List myList) {
       }
     }
 
+    // Not found Message
     if (!recordFound) {
       print("Sorry! Record Not Found");
     }
