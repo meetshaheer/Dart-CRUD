@@ -9,7 +9,7 @@ void main(List<String> args) {
 
   // While Loop For Program Iteration
   String terminate = "N";
-  while (terminate == 'N') {
+  while (terminate == 'N' || terminate == 'n') {
     int choice = menu();
     switch (choice) {
       //
